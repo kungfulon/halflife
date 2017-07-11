@@ -344,6 +344,11 @@ void CL_LoadParticleMan( void )
 	}
 }
 
+void *ClientFactory(void)
+{
+	return Sys_GetFactoryThis();
+}
+
 cldll_func_dst_t *g_pcldstAddrs;
 
 extern "C" void CL_DLLEXPORT F(void *pv)
@@ -396,6 +401,8 @@ extern "C" void CL_DLLEXPORT F(void *pv)
 	HUD_DirectorMessage,
 	HUD_GetStudioModelInterface,
 	HUD_ChatInputPosition,
+	NULL,
+	ClientFactory
 	};
 
 	*pcldll_func = cldll_func;

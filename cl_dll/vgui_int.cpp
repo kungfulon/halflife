@@ -122,7 +122,70 @@ void VGui_Shutdown()
 	gViewPort = NULL;
 }
 
+#define vgui vgui2
 
+#include <interface.h>
+#include <vgui/isurface.h>
 
+class IClientVGUI : public IBaseInterface
+{
+public:
+	virtual void Initialize(CreateInterfaceFn *factories, int count) = 0;
+	virtual void Start(void) = 0;
+	virtual void SetParent(int parent) = 0;
+	virtual bool UseVGUI1(void) = 0;
+	virtual void HideScoreBoard(void) = 0;
+	virtual void HideAllVGUIMenu(void) = 0;
+	virtual void ActivateClientUI(void) = 0;
+	virtual void HideClientUI(void) = 0;
+};
 
+#define CLIENTVGUI_INTERFACE_VERSION "VClientVGUI001"
 
+class CClientVGUI : public IClientVGUI
+{
+public:
+	virtual void Initialize(CreateInterfaceFn *factories, int count)
+	{
+		gEngfuncs.pfnClientCmd("echo \"CClientVGUI::Initialize\"");
+	}
+
+	virtual void Start(void)
+	{
+		gEngfuncs.pfnClientCmd("echo \"CClientVGUI::Start\"");
+	}
+
+	virtual void SetParent(int parent)
+	{
+		gEngfuncs.pfnClientCmd("echo \"CClientVGUI::SetParent\"");
+	}
+
+	virtual bool UseVGUI1(void)
+	{
+		//gEngfuncs.pfnClientCmd("echo \"CClientVGUI::UseVGUI1\"");
+
+		return false;
+	}
+
+	virtual void HideScoreBoard(void)
+	{
+		gEngfuncs.pfnClientCmd("echo \"CClientVGUI::HideScoreBoard\"");
+	}
+
+	virtual void HideAllVGUIMenu(void)
+	{
+		gEngfuncs.pfnClientCmd("echo \"CClientVGUI::HideAllVGUIMenu\"");
+	}
+
+	virtual void ActivateClientUI(void)
+	{
+		gEngfuncs.pfnClientCmd("echo \"CClientVGUI::ActivateClientUI\"");
+	}
+
+	virtual void HideClientUI(void)
+	{
+		gEngfuncs.pfnClientCmd("echo \"CClientVGUI::HideClientUI\"");
+	}
+};
+
+EXPOSE_SINGLE_INTERFACE(CClientVGUI, IClientVGUI, CLIENTVGUI_INTERFACE_VERSION);
