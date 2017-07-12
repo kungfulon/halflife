@@ -22,6 +22,9 @@
     <Filter Include="Source Files\vgui2\controls">
       <UniqueIdentifier>{96888b7c-19e5-4862-bc1d-64fe55655cc7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\public">
+      <UniqueIdentifier>{feb84b85-67a9-4349-82a2-8ee8247df53f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\cstrike\cl_dll\cdll_int.cpp">
@@ -61,6 +64,186 @@
       <Filter>Source Files\vgui2\controls</Filter>
     </ClCompile>
     <ClCompile Include="..\..\tier1\generichash.cpp">
+      <Filter>Source Files\tier1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\panel.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\menu.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\tooltip.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\textentry.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\buildfactoryhelper.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\menuitem.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\label.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\textimage.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\scrollbar.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\animatingimagepanel.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\animationcontroller.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\bitmapimagepanel.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\buildgroup.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\buildmodedialog.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\button.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\checkbutton.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\checkbuttonlist.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\combobox.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\directoryselectdialog.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\divider.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\editablepanel.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\expandbutton.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\fileopendialog.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\focusnavgroup.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\frame.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\graphpanel.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\html.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\image.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\imagelist.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\imagepanel.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\inputdialog.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\keybindinghelpdialog.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\keyboardeditordialog.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\listpanel.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\listviewpanel.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\menubar.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\menubutton.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\messagebox.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\panellistpanel.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\progressbar.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\progressbox.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\propertydialog.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\propertypage.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\propertysheet.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\querybox.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\radiobutton.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\richtext.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\scrollbarslider.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\sectionedlistpanel.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\slider.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\splitter.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\togglebutton.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\toolwindow.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\treeview.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\treeviewlistcontrol.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\urllabel.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\wizardpanel.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\vgui2\controls\wizardsubpanel.cpp">
+      <Filter>Source Files\vgui2\controls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\public\filesystem_helpers.cpp">
+      <Filter>Source Files\public</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tier1\characterset.cpp">
       <Filter>Source Files\tier1</Filter>
     </ClCompile>
   </ItemGroup>

@@ -180,7 +180,7 @@ void ScrollBar::ApplySchemeSettings(IScheme *pScheme)
 		int value = atoi(resourceString);
 		if (IsProportional())
 		{
-			value = scheme()->GetProportionalScaledValueEx(GetScheme(), value);
+			value = scheme()->GetProportionalScaledValue(value);
 		}
 
 		if (_slider && _slider->IsVertical())

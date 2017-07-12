@@ -44,8 +44,8 @@ PanelListPanel::PanelListPanel( vgui::Panel *parent, char const *panelName ) : P
 
 	if ( IsProportional() )
 	{
-		m_iDefaultHeight = scheme()->GetProportionalScaledValueEx( GetScheme(), DEFAULT_HEIGHT );
-		m_iPanelBuffer = scheme()->GetProportionalScaledValueEx( GetScheme(), PANELBUFFER );
+		m_iDefaultHeight = scheme()->GetProportionalScaledValue( DEFAULT_HEIGHT );
+		m_iPanelBuffer = scheme()->GetProportionalScaledValue( PANELBUFFER );
 	}
 	else
 	{

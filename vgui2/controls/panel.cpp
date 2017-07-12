@@ -3265,7 +3265,7 @@ void Panel::SetBorder(IBorder *border)
 		ipanel()->SetInset(GetVPanel(), x, y, x2, y2);
 
 		// update our background type based on the bord
-		SetPaintBackgroundType(border->GetBackgroundType());
+		//SetPaintBackgroundType(border->GetBackgroundType());
 	}
 	else
 	{
@@ -4782,7 +4782,7 @@ public:
 	{
 		void *data = ( void * )( (*entry->m_pfnLookup)( panel ) );
 		float f = atof( entry->defaultvalue() );
-		f = scheme()->GetProportionalScaledValue( panel->GetScheme(), f );
+		f = scheme()->GetProportionalScaledValue( f );
 		*(float *)data = f;
 	}
 };
@@ -4967,67 +4967,67 @@ public:
 	}
 };
 
-class CTextureIdProperty : public vgui::IPanelAnimationPropertyConverter
-{
-public:
-	virtual void GetData( Panel *panel, KeyValues *kv, PanelAnimationMapEntry *entry )
-	{
-		void *data = ( void * )( (*entry->m_pfnLookup)( panel ) );
-		int currentId = *(int *)data;
-
-		// lookup texture name for id
-		char texturename[ 512 ];
-		if ( currentId != -1 &&
-			surface()->DrawGetTextureFile( currentId, texturename, sizeof( texturename ) ) )
-		{
-			kv->SetString( entry->name(), texturename );
-		}
-		else
-		{
-			kv->SetString( entry->name(), "" );
-		}
-	}
-	
-	virtual void SetData( Panel *panel, KeyValues *kv, PanelAnimationMapEntry *entry )
-	{
-		void *data = ( void * )( (*entry->m_pfnLookup)( panel ) );
-
-		int currentId = -1;
-
-		char const *texturename = kv->GetString( entry->name() );
-		if ( texturename && texturename[ 0 ] )
-		{
-			currentId = surface()->DrawGetTextureId( texturename );
-			if ( currentId == -1 )
-			{
-				currentId = surface()->CreateNewTextureID();
-			}
-			surface()->DrawSetTextureFile( currentId, texturename, false, true );
-		}
-
-		*(int *)data = currentId;
-	}
-
-	virtual void InitFromDefault( Panel *panel, PanelAnimationMapEntry *entry )
-	{
-		void *data = ( void * )( (*entry->m_pfnLookup)( panel ) );
-
-		int currentId = -1;
-
-		char const *texturename = entry->defaultvalue();
-		if ( texturename && texturename[ 0 ] )
-		{
-			currentId = -1;//surface()->DrawGetTextureId( texturename );
-			if ( currentId == -1 )
-			{
-				currentId = surface()->CreateNewTextureID();
-			}
-			surface()->DrawSetTextureFile( currentId, texturename, false, true );
-		}
-
-		*(int *)data = currentId;
-	}
-};
+//class CTextureIdProperty : public vgui::IPanelAnimationPropertyConverter
+//{
+//public:
+//	virtual void GetData( Panel *panel, KeyValues *kv, PanelAnimationMapEntry *entry )
+//	{
+//		void *data = ( void * )( (*entry->m_pfnLookup)( panel ) );
+//		int currentId = *(int *)data;
+//
+//		// lookup texture name for id
+//		char texturename[ 512 ];
+//		if ( currentId != -1 &&
+//			surface()->DrawGetTextureFile( currentId, texturename, sizeof( texturename ) ) )
+//		{
+//			kv->SetString( entry->name(), texturename );
+//		}
+//		else
+//		{
+//			kv->SetString( entry->name(), "" );
+//		}
+//	}
+//	
+//	virtual void SetData( Panel *panel, KeyValues *kv, PanelAnimationMapEntry *entry )
+//	{
+//		void *data = ( void * )( (*entry->m_pfnLookup)( panel ) );
+//
+//		int currentId = -1;
+//
+//		char const *texturename = kv->GetString( entry->name() );
+//		if ( texturename && texturename[ 0 ] )
+//		{
+//			currentId = surface()->DrawGetTextureId( texturename );
+//			if ( currentId == -1 )
+//			{
+//				currentId = surface()->CreateNewTextureID();
+//			}
+//			surface()->DrawSetTextureFile( currentId, texturename, false, true );
+//		}
+//
+//		*(int *)data = currentId;
+//	}
+//
+//	virtual void InitFromDefault( Panel *panel, PanelAnimationMapEntry *entry )
+//	{
+//		void *data = ( void * )( (*entry->m_pfnLookup)( panel ) );
+//
+//		int currentId = -1;
+//
+//		char const *texturename = entry->defaultvalue();
+//		if ( texturename && texturename[ 0 ] )
+//		{
+//			currentId = -1;//surface()->DrawGetTextureId( texturename );
+//			if ( currentId == -1 )
+//			{
+//				currentId = surface()->CreateNewTextureID();
+//			}
+//			surface()->DrawSetTextureFile( currentId, texturename, false, true );
+//		}
+//
+//		*(int *)data = currentId;
+//	}
+//};
 
 static CFloatProperty floatconverter;
 static CProportionalFloatProperty p_floatconverter;
@@ -5037,7 +5037,7 @@ static CColorProperty colorconverter;
 static CBoolProperty boolconverter;
 static CStringProperty stringconverter;
 static CHFontProperty fontconverter;
-static CTextureIdProperty textureidconverter;
+//static CTextureIdProperty textureidconverter;
 
 static CUtlDict< IPanelAnimationPropertyConverter *, int > g_AnimationPropertyConverters;
 
@@ -5087,7 +5087,7 @@ void Panel::InitPropertyConverters( void )
 	AddPropertyConverter( "proportional_float", &p_floatconverter );
 	AddPropertyConverter( "proportional_int", &p_intconverter );
 
-	AddPropertyConverter( "textureid", &textureidconverter );
+//	AddPropertyConverter( "textureid", &textureidconverter );
 }
 
 bool Panel::InternalRequestInfo( PanelAnimationMap *map, KeyValues *outputData )

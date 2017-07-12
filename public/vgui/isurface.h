@@ -88,6 +88,7 @@ public:
 	virtual void DrawGetTextPos(int& x,int& y) = 0;
 	virtual void DrawPrintText(const wchar_t *text, int textLen) = 0;
 	virtual void DrawUnicodeChar(wchar_t wch) = 0;
+	virtual void DrawUnicodeCharAdd(wchar_t wch) = 0;
 
 	virtual void DrawFlushText() = 0;		// flushes any buffered text (for rendering optimizations)
 	virtual IHTML *CreateHTMLWindow(vgui::IHTMLEvents *events,VPANEL context)=0;
@@ -175,7 +176,7 @@ public:
 		FONTFLAG_BITMAP			= 0x800,		// compiled bitmap font - no fallbacks
 	};
 
-	virtual bool SetFontGlyphSet(HFont font, const char *windowsFontName, int tall, int weight, int blur, int scanlines, int flags, int lowRange, int highRange) = 0;
+	virtual bool AddGlyphSetToFont(HFont font, const char *windowsFontName, int tall, int weight, int blur, int scanlines, int flags, int lowRange, int highRange) = 0;
 
 	// adds a custom font file (only supports true type font files (.ttf) for now)
 	virtual bool AddCustomFontFile(const char *fontFileName) = 0;

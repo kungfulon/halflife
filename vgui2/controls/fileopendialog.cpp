@@ -1092,11 +1092,11 @@ void FileOpenDialog::PopulateFileList()
 
 				kv->SetInt("image", 1);
 
-				IImage *image = surface()->GetIconImageForFullPath( fullpath );
-				if ( image )
-				{
-					kv->SetPtr( "iconImage", (void *)image );
-				}
+				//IImage *image = surface()->GetIconImageForFullPath( fullpath );
+				//if ( image )
+				//{
+				//	kv->SetPtr( "iconImage", (void *)image );
+				//}
 
 				kv->SetInt("imageSelected", 1);
 				kv->SetInt("directory", 0);
@@ -1104,9 +1104,9 @@ void FileOpenDialog::PopulateFileList()
 				kv->SetInt( "filesizeint", findData.nFileSizeLow );
 				kv->SetString( "filesize", Q_pretifymem( findData.nFileSizeLow, 0, true ) );
 				Q_FixSlashes( fullpath );
-				wchar_t fileType[ 80 ];
-				filesystem()->GetFileTypeForFullPath( fullpath, fileType, sizeof( fileType ) );
-				kv->SetWString( "type", fileType );
+				//wchar_t fileType[ 80 ];
+				//filesystem()->GetFileTypeForFullPath( fullpath, fileType, sizeof( fileType ) );
+				//kv->SetWString( "type", fileType );
 				kv->SetString( "attributes", GetAttributesAsString( findData.dwFileAttributes ) );
 				kv->SetString( "modified", GetFileTimetamp( findData.ftLastWriteTime ) );
 				kv->SetString( "created", GetFileTimetamp( findData.ftCreationTime ) );
@@ -1343,7 +1343,7 @@ void FileOpenDialog::OnOpen()
 	}
 
 	// If the name specified is a directory, then change directory
-	if ( vgui::filesystem()->IsDirectory( pFullPath, NULL ) )
+	if ( vgui::filesystem()->IsDirectory( pFullPath ) )
 	{
 		// it's a directory; change to the specified directory
 		if ( !bSpecifiedDirectory )

@@ -672,7 +672,7 @@ void TextEntry::PaintBackground()
 
 	// FIXME: Should insert at cursor pos instead
 	bool composing = m_bAllowNonAsciiCharacters && wcslen( m_szComposition ) > 0;
-	bool invertcomposition = input()->GetShouldInvertCompositionString();
+	//bool invertcomposition = input()->GetShouldInvertCompositionString();
 
 	if ( composing )
 	{
@@ -753,16 +753,16 @@ void TextEntry::PaintBackground()
 
 					int w = getCharWidth( _font, ch );
 
-					if ( invertcomposition )
-					{
-						// Invert color
-						surface()->DrawSetTextColor( saveBgColor );
-						surface()->DrawSetColor( col );
-						
-						surface()->DrawFilledRect(x, 0, x+w, tall);
-						// Set the underline color to the text color
-						surface()->DrawSetColor( saveBgColor );
-					}
+					//if ( invertcomposition )
+					//{
+					//	// Invert color
+					//	surface()->DrawSetTextColor( saveBgColor );
+					//	surface()->DrawSetColor( col );
+					//	
+					//	surface()->DrawFilledRect(x, 0, x+w, tall);
+					//	// Set the underline color to the text color
+					//	surface()->DrawSetColor( saveBgColor );
+					//}
 
 					surface()->DrawFilledRect( x, tall - 2, x + w, tall - 1 );
 				}
@@ -817,14 +817,14 @@ void TextEntry::PaintBackground()
 
 					int w = getCharWidth( _font, ch );
 
-					if ( invertcomposition )
-					{
-						// Invert color
-						surface()->DrawSetTextColor( saveBgColor );
-						surface()->DrawFilledRect(x, 0, x+w, tall);
-						// Set the underline color to the text color
-						surface()->DrawSetColor( saveBgColor );
-					}
+					//if ( invertcomposition )
+					//{
+					//	// Invert color
+					//	surface()->DrawSetTextColor( saveBgColor );
+					//	surface()->DrawFilledRect(x, 0, x+w, tall);
+					//	// Set the underline color to the text color
+					//	surface()->DrawSetColor( saveBgColor );
+					//}
 
 					surface()->DrawFilledRect( x, tall - 2, x + w, tall - 1 );
 				}
@@ -3782,7 +3782,7 @@ void TextEntry::OnChangeIME( bool forward )
 	// Only change ime if Unicode aware
 	if ( m_bAllowNonAsciiCharacters )
 	{
-		input()->OnChangeIME( forward );
+		//input()->OnChangeIME( forward );
 	}
 }
 
@@ -3792,7 +3792,7 @@ void TextEntry::OnChangeIME( bool forward )
 //-----------------------------------------------------------------------------
 void TextEntry::LanguageChanged( int handleValue )
 {
-	input()->OnChangeIMEByHandle( handleValue );
+	//input()->OnChangeIMEByHandle( handleValue );
 }
 
 
@@ -3802,7 +3802,7 @@ void TextEntry::LanguageChanged( int handleValue )
 //-----------------------------------------------------------------------------
 void TextEntry::ConversionModeChanged( int handleValue )
 {
-	input()->OnChangeIMEConversionModeByHandle( handleValue );
+	//input()->OnChangeIMEConversionModeByHandle( handleValue );
 }
 
 
@@ -3812,7 +3812,7 @@ void TextEntry::ConversionModeChanged( int handleValue )
 //-----------------------------------------------------------------------------
 void TextEntry::SentenceModeChanged( int handleValue )
 {
-	input()->OnChangeIMESentenceModeByHandle( handleValue );
+	//input()->OnChangeIMESentenceModeByHandle( handleValue );
 }
 
 //-----------------------------------------------------------------------------
@@ -3828,99 +3828,99 @@ void TextEntry::CompositionString( const wchar_t *compstr )
 void TextEntry::ShowIMECandidates()
 {
 #ifndef _XBOX
-	HideIMECandidates();
+	//HideIMECandidates();
 
-	int c = input()->GetCandidateListCount();
-	if ( c == 0 )
-	{
-		return;
-	}
+	////int c = input()->GetCandidateListCount();
+	////if ( c == 0 )
+	////{
+	////	return;
+	////}
 
-	m_pIMECandidates = new Menu( this, "IMECandidatesMenu" );
+	//m_pIMECandidates = new Menu( this, "IMECandidatesMenu" );
 	
-	int pageStart = input()->GetCandidateListPageStart();
-	int pageSize = input()->GetCandidateListPageSize();
-	int selected = input()->GetCandidateListSelectedItem();
+	//int pageStart = input()->GetCandidateListPageStart();
+	//int pageSize = input()->GetCandidateListPageSize();
+	//int selected = input()->GetCandidateListSelectedItem();
 
-	int startAtOne = input()->CandidateListStartsAtOne() ? 1 : 0;
+	//int startAtOne = input()->CandidateListStartsAtOne() ? 1 : 0;
 
-	if ( ( selected < pageStart ) || ( selected >= pageStart + pageSize ) )
-	{
-		pageStart = ( selected / pageSize ) * pageSize;
-		input()->SetCandidateListPageStart( pageStart );
-	}
+	//if ( ( selected < pageStart ) || ( selected >= pageStart + pageSize ) )
+	//{
+	//	pageStart = ( selected / pageSize ) * pageSize;
+	//	input()->SetCandidateListPageStart( pageStart );
+	//}
 
-	for ( int i = pageStart; i < pageStart + pageSize; ++i )
-	{
-		if ( i >= c )
-			continue;
+	//for ( int i = pageStart; i < pageStart + pageSize; ++i )
+	//{
+	//	if ( i >= c )
+	//		continue;
 
-		bool isSelected = ( i == selected ) ? true : false;
+	//	bool isSelected = ( i == selected ) ? true : false;
 
-		wchar_t unicode[ 32 ];
-		input()->GetCandidate( i, unicode, sizeof( unicode ) );
+	//	wchar_t unicode[ 32 ];
+	//	input()->GetCandidate( i, unicode, sizeof( unicode ) );
 
-		wchar_t label[ 64 ];
-		_snwprintf( label, sizeof( label ) / sizeof( wchar_t ) - 1, L"%i %s", i - pageStart + startAtOne, unicode );
-		label[ sizeof( label ) / sizeof( wchar_t ) - 1 ] = L'\0';
+	//	wchar_t label[ 64 ];
+	//	_snwprintf( label, sizeof( label ) / sizeof( wchar_t ) - 1, L"%i %s", i - pageStart + startAtOne, unicode );
+	//	label[ sizeof( label ) / sizeof( wchar_t ) - 1 ] = L'\0';
 
-		int id = m_pIMECandidates->AddMenuItem( "Candidate", label, (KeyValues *)NULL, this );
-		if ( isSelected )
-		{
-			m_pIMECandidates->SetCurrentlyHighlightedItem( id );
-		}
-	}
-	
-	m_pIMECandidates->SetVisible(true);
-	m_pIMECandidates->SetParent(this);
-	m_pIMECandidates->AddActionSignalTarget(this);
-	m_pIMECandidates->SetKeyBoardInputEnabled( false );
+	//	int id = m_pIMECandidates->AddMenuItem( "Candidate", label, (KeyValues *)NULL, this );
+	//	if ( isSelected )
+	//	{
+	//		m_pIMECandidates->SetCurrentlyHighlightedItem( id );
+	//	}
+	//}
+	//
+	//m_pIMECandidates->SetVisible(true);
+	//m_pIMECandidates->SetParent(this);
+	//m_pIMECandidates->AddActionSignalTarget(this);
+	//m_pIMECandidates->SetKeyBoardInputEnabled( false );
 
-	int cx, cy;
-	CursorToPixelSpace(_cursorPos, cx, cy);
-	cy = GetTall();
+	//int cx, cy;
+	//CursorToPixelSpace(_cursorPos, cx, cy);
+	//cy = GetTall();
 
-	LocalToScreen( cx, cy );
+	//LocalToScreen( cx, cy );
 
-	//m_pIMECandidates->SetPos( cx, cy );
+	////m_pIMECandidates->SetPos( cx, cy );
 
-	// relayout the menu immediately so that we know it's size
-	m_pIMECandidates->InvalidateLayout(true);
-	int menuWide, menuTall;
-	m_pIMECandidates->GetSize(menuWide, menuTall);
-	
-	// work out where the cursor is and therefore the best place to put the menu
-	int wide, tall;
-	surface()->GetScreenSize(wide, tall);
-	
-	if (wide - menuWide > cx)
-	{
-		// menu hanging right
-		if (tall - menuTall > cy)
-		{
-			// menu hanging down
-			m_pIMECandidates->SetPos(cx, cy);
-		}
-		else
-		{
-			// menu hanging up
-			m_pIMECandidates->SetPos(cx, cy - menuTall - GetTall());
-		}
-	}
-	else
-	{
-		// menu hanging left
-		if (tall - menuTall > cy)
-		{
-			// menu hanging down
-			m_pIMECandidates->SetPos(cx - menuWide, cy);
-		}
-		else
-		{
-			// menu hanging up
-			m_pIMECandidates->SetPos(cx - menuWide, cy - menuTall-GetTall());
-		}
-	}
+	//// relayout the menu immediately so that we know it's size
+	//m_pIMECandidates->InvalidateLayout(true);
+	//int menuWide, menuTall;
+	//m_pIMECandidates->GetSize(menuWide, menuTall);
+	//
+	//// work out where the cursor is and therefore the best place to put the menu
+	//int wide, tall;
+	//surface()->GetScreenSize(wide, tall);
+	//
+	//if (wide - menuWide > cx)
+	//{
+	//	// menu hanging right
+	//	if (tall - menuTall > cy)
+	//	{
+	//		// menu hanging down
+	//		m_pIMECandidates->SetPos(cx, cy);
+	//	}
+	//	else
+	//	{
+	//		// menu hanging up
+	//		m_pIMECandidates->SetPos(cx, cy - menuTall - GetTall());
+	//	}
+	//}
+	//else
+	//{
+	//	// menu hanging left
+	//	if (tall - menuTall > cy)
+	//	{
+	//		// menu hanging down
+	//		m_pIMECandidates->SetPos(cx - menuWide, cy);
+	//	}
+	//	else
+	//	{
+	//		// menu hanging up
+	//		m_pIMECandidates->SetPos(cx - menuWide, cy - menuTall-GetTall());
+	//	}
+	//}
 #endif
 }
 
@@ -3937,70 +3937,70 @@ void TextEntry::HideIMECandidates()
 void TextEntry::UpdateIMECandidates()
 {
 #ifndef _XBOX
-	if ( !m_pIMECandidates )
-		return;
+	//if ( !m_pIMECandidates )
+	//	return;
 
-	int c = input()->GetCandidateListCount();
-	if ( c == 0 )
-	{
-		HideIMECandidates();
-		return;
-	}
+	//int c = input()->GetCandidateListCount();
+	//if ( c == 0 )
+	//{
+	//	HideIMECandidates();
+	//	return;
+	//}
 
-	int oldCount = m_pIMECandidates->GetItemCount();
-	int newCount = input()->GetCandidateListPageSize();
+	//int oldCount = m_pIMECandidates->GetItemCount();
+	//int newCount = input()->GetCandidateListPageSize();
 
-	if ( oldCount != newCount )
-	{
-		// Recreate the entire menu
-		ShowIMECandidates();
-		return;
-	}
+	//if ( oldCount != newCount )
+	//{
+	//	// Recreate the entire menu
+	//	ShowIMECandidates();
+	//	return;
+	//}
 
-	int pageSize = input()->GetCandidateListPageSize();
-	int selected = input()->GetCandidateListSelectedItem();
-	int pageStart = input()->GetCandidateListPageStart();
+	//int pageSize = input()->GetCandidateListPageSize();
+	//int selected = input()->GetCandidateListSelectedItem();
+	//int pageStart = input()->GetCandidateListPageStart();
 
-	if ( ( selected < pageStart ) || selected >= pageStart + pageSize )
-	{
-		pageStart = ( selected / pageSize ) * pageSize;
-		input()->SetCandidateListPageStart( pageStart );
-	}
+	//if ( ( selected < pageStart ) || selected >= pageStart + pageSize )
+	//{
+	//	pageStart = ( selected / pageSize ) * pageSize;
+	//	input()->SetCandidateListPageStart( pageStart );
+	//}
 
-	int startAtOne = input()->CandidateListStartsAtOne() ? 1 : 0;
+	//int startAtOne = input()->CandidateListStartsAtOne() ? 1 : 0;
 
-	for ( int i = pageStart; i < pageStart + pageSize; ++i )
-	{
-		int id = m_pIMECandidates->GetMenuID( i - pageStart );
+	//for ( int i = pageStart; i < pageStart + pageSize; ++i )
+	//{
+	//	int id = m_pIMECandidates->GetMenuID( i - pageStart );
 
-		MenuItem *item = m_pIMECandidates->GetMenuItem( id );
-		if ( !item )
-			continue;
+	//	MenuItem *item = m_pIMECandidates->GetMenuItem( id );
+	//	if ( !item )
+	//		continue;
 
-		if ( i >= c )
-		{
-			item->SetVisible( false );
-			continue;
-		}
-		else
-		{
-			item->SetVisible( true );
-		}
+	//	if ( i >= c )
+	//	{
+	//		item->SetVisible( false );
+	//		continue;
+	//	}
+	//	else
+	//	{
+	//		item->SetVisible( true );
+	//	}
 
-		bool isSelected = ( i == selected ) ? true : false;
+	//	bool isSelected = ( i == selected ) ? true : false;
 
-		wchar_t unicode[ 32 ];
-		input()->GetCandidate( i, unicode, sizeof( unicode ) );
+	//	wchar_t unicode[ 32 ];
+	//	input()->GetCandidate( i, unicode, sizeof( unicode ) );
 
-		wchar_t label[ 64 ];
-		_snwprintf( label, sizeof( label ) / sizeof( wchar_t ) - 1, L"%i %s", i - pageStart + startAtOne, unicode );
-		label[ sizeof( label ) / sizeof( wchar_t ) - 1 ] = L'\0';
-		item->SetText( label );
-		if ( isSelected )
-		{
-			m_pIMECandidates->SetCurrentlyHighlightedItem( id );
-		}
-	}
+	//	wchar_t label[ 64 ];
+	//	_snwprintf( label, sizeof( label ) / sizeof( wchar_t ) - 1, L"%i %s", i - pageStart + startAtOne, unicode );
+	//	label[ sizeof( label ) / sizeof( wchar_t ) - 1 ] = L'\0';
+	//	item->SetText( label );
+	//	if ( isSelected )
+	//	{
+	//		m_pIMECandidates->SetCurrentlyHighlightedItem( id );
+	//	}
+	//}
 #endif
 }
 
@@ -4009,22 +4009,22 @@ void TextEntry::UpdateIMECandidates()
 //-----------------------------------------------------------------------------
 void TextEntry::FlipToLastIME()
 {
-	int hCurrentIME = input()->GetCurrentIMEHandle();
-	int hEnglishIME = input()->GetEnglishIMEHandle();
+	//int hCurrentIME = input()->GetCurrentIMEHandle();
+	//int hEnglishIME = input()->GetEnglishIMEHandle();
 
-	bool isEnglish = ( hCurrentIME == hEnglishIME ) ? true : false;
+	//bool isEnglish = ( hCurrentIME == hEnglishIME ) ? true : false;
 
-	// If in english, flip back to previous
-	if ( isEnglish )
-	{
-		input()->OnChangeIMEByHandle( m_hPreviousIME );
-	}
-	else
-	{
-		// If not, remember language and flip to english...
-		m_hPreviousIME = hCurrentIME;
-		input()->OnChangeIMEByHandle( hEnglishIME );
-	}
+	//// If in english, flip back to previous
+	//if ( isEnglish )
+	//{
+	//	input()->OnChangeIMEByHandle( m_hPreviousIME );
+	//}
+	//else
+	//{
+	//	// If not, remember language and flip to english...
+	//	m_hPreviousIME = hCurrentIME;
+	//	input()->OnChangeIMEByHandle( hEnglishIME );
+	//}
 }
 
 void TextEntry::SetDrawLanguageIDAtLeft( bool state )

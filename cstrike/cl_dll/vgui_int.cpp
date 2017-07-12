@@ -1,9 +1,13 @@
-#include "interface.h"
+﻿#include "interface.h"
 #include "IClientVGUI.h"
 
 #include <vgui/isurface.h>
+#include <vgui/isystem.h>
+#include <vgui/IVGui.h>
 
 #include <vgui_controls\Controls.h>
+#include <vgui_controls\Panel.h>
+#include <vgui_controls\frame.h>
 
 using namespace vgui;
 
@@ -22,18 +26,27 @@ public:
 	virtual void Start(void)
 	{
 		g_pClientVGUI->Start();
+
+		m_pTestPanel = NULL;
+		m_hNewScheme = scheme()->LoadSchemeFromFile("resource/SourceScheme.res", "SourceScheme");
 	}
 
 	virtual void SetParent(int parent)
 	{
 		g_pClientVGUI->SetParent(parent);
+
+		m_pTestPanel = CREATE_PANEL(Frame, NULL, "XD");
+		m_pTestPanel->SetParent(parent);
+		m_pTestPanel->SetScheme(m_hNewScheme);
+		m_pTestPanel->InvalidateLayout(false, true);
+		m_pTestPanel->SetTitle(L"XDDDDDDDDDDDD", true);
+		m_pTestPanel->SetPos(0, 0);
+		m_pTestPanel->SetSize(200, 200);
+		m_pTestPanel->Activate();
 	}
 
 	virtual bool UseVGUI1(void)
 	{
-		surface()->DrawSetColor(255, 255, 255, 255);
-		surface()->DrawFilledRect(0, 0, 200, 200);
-
 		return g_pClientVGUI->UseVGUI1();
 	}
 
@@ -56,6 +69,10 @@ public:
 	{
 		g_pClientVGUI->HideClientUI();
 	}
+
+private:
+	Frame *m_pTestPanel;
+	HScheme m_hNewScheme;
 };
 
 EXPOSE_SINGLE_INTERFACE(CClientVGUI, IClientVGUI, CLIENTVGUI_INTERFACE_VERSION);

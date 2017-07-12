@@ -742,11 +742,11 @@ AnimationController::Value_t AnimationController::GetInterpolatedValue(int inter
 		pos = 0.5f + 0.5f * ( cos( pos * 2.0f * M_PI * interpolatorParam ) );
 		break;
 	case INTERPOLATOR_FLICKER:
-		if ( RandomFloat( 0.0f, 1.0f ) < interpolatorParam )
-		{
-			pos = 1.0f;
-		}
-		else
+		//if ( RandomFloat( 0.0f, 1.0f ) < interpolatorParam )
+		//{
+		//	pos = 1.0f;
+		//}
+		//else
 		{
 			pos = 0.0f;
 		}
